@@ -10,11 +10,13 @@ let localizations = new Map([
     ['registration.html', new Map([['romanian', 'Înregistrare'], ['russian', 'Регистрация'], ['english', 'Registration']])],
     ['students.html', new Map([['romanian', 'Elevi'], ['russian', 'Ученики'], ['english', 'Students']])],
     ['teachers.html', new Map([['romanian', 'Profesori'], ['russian', 'Преподаватели'], ['english', 'Teachers']])],
+    ['groups.html', new Map([['romanian', 'Grupuri'], ['russian', 'Группы'], ['english', 'Groups']])],
     ['contacts.html', new Map([['romanian', 'Contacte'], ['russian', 'Контакты'], ['english', 'Contacts']])],
     ['name', new Map([['romanian', 'Nume'], ['russian', 'Имя'], ['english', 'Name']])],
     ['status', new Map([['romanian', 'Starea'], ['russian', 'Статус'], ['english', 'Status']])],
-    ['level', new Map([['romanian', 'Nievel'], ['russian', 'Уровень'], ['english', 'Level']])],
+    ['level', new Map([['romanian', 'Nivel'], ['russian', 'Уровень'], ['english', 'Level']])],
     ['group', new Map([['romanian', 'Grup'], ['russian', 'Группа'], ['english', 'Group']])],
+    ['teacher', new Map([['romanian', 'Profesor'], ['russian', 'Преподаватель'], ['english', 'Teacher']])],
     ['excludeInactive', new Map([['romanian', 'Excludeți inactiv'], ['russian', 'Исключить неактивных'], ['english', 'Exclude inactive']])],
     ['excludeBusy', new Map([['romanian', 'Excludeți ocupați'], ['russian', 'Исключить занятых'], ['english', 'Exclude busy']])],
     ['actualize', new Map([['romanian', 'Actualizare'], ['russian', 'Актуализировать'], ['english', 'Actualize']])],
@@ -58,6 +60,9 @@ function getLocalizedNavbar() {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/teachers.html">${getLocalizedValue('teachers.html')}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/groups.html">${getLocalizedValue('groups.html')}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://t.me/media_aggregated_reviews" target="_blank">${getLocalizedValue('contacts.html')}</a>
