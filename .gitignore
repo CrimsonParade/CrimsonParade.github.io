@@ -1,0 +1,11 @@
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+.idea
+*.iws
+*.iml
+*.ipr
+*.log
+*.log.*.gz
+.DS_Store
+*.properties
