@@ -8,13 +8,17 @@ let localizations = new Map([
         ['english', 'National program for the study of the Romanian language by national minorities, including adults']])],
     ['index.html', new Map([['romanian', 'Acasă'], ['russian', 'На главную'], ['english', 'Home']])],
     ['registration.html', new Map([['romanian', 'Înregistrare'], ['russian', 'Регистрация'], ['english', 'Registration']])],
-    ['students.html', new Map([['romanian', 'Elevii'], ['russian', 'Ученики'], ['english', 'Students']])],
+    ['students.html', new Map([['romanian', 'Elevi'], ['russian', 'Ученики'], ['english', 'Students']])],
+    ['teachers.html', new Map([['romanian', 'Profesori'], ['russian', 'Преподаватели'], ['english', 'Teachers']])],
     ['contacts.html', new Map([['romanian', 'Contacte'], ['russian', 'Контакты'], ['english', 'Contacts']])],
     ['name', new Map([['romanian', 'Nume'], ['russian', 'Имя'], ['english', 'Name']])],
     ['status', new Map([['romanian', 'Starea'], ['russian', 'Статус'], ['english', 'Status']])],
+    ['level', new Map([['romanian', 'Nievel'], ['russian', 'Уровень'], ['english', 'Level']])],
     ['group', new Map([['romanian', 'Grup'], ['russian', 'Группа'], ['english', 'Group']])],
     ['excludeInactive', new Map([['romanian', 'Excludeți inactiv'], ['russian', 'Исключить неактивных'], ['english', 'Exclude inactive']])],
+    ['excludeBusy', new Map([['romanian', 'Excludeți ocupați'], ['russian', 'Исключить занятых'], ['english', 'Exclude busy']])],
     ['actualize', new Map([['romanian', 'Actualizare'], ['russian', 'Актуализировать'], ['english', 'Actualize']])],
+    ['informationAboutGroup', new Map([['romanian', 'Informația de grupul'], ['russian', 'Информация о группе'], ['english', 'Information about group']])],
 
     ['registration', new Map([['russian', 'Регистрация'], ['english', 'Registration']])],
     ['login', new Map([['russian', 'Войти'], ['english', 'Login']])],
@@ -51,6 +55,9 @@ function getLocalizedNavbar() {
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/students.html">${getLocalizedValue('students.html')}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/teachers.html">${getLocalizedValue('teachers.html')}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="https://t.me/media_aggregated_reviews" target="_blank">${getLocalizedValue('contacts.html')}</a>
