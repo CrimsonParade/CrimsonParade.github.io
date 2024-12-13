@@ -13,9 +13,11 @@ window.onload = function () {
 
 function changeLanguage() {
     document.getElementById('form').innerHTML = `<h3>${getLocalizedValue('informationAboutGroup')} '${data.name}'</h3><br>
-        <p align="left">${getLocalizedValue('teacher')}: ${getTeacherLink(data.teacher.name)}<br>
-           ${getLocalizedValue('level')}: ${data.level}<br>
-           ${getLocalizedValue('status')}: ${data.status}</p>
+        <p align="left">
+            ${getLocalizedValue('teacher')}: ${getTeacherLink(data.teacher.name)}<br>
+            ${getLocalizedValue('level')}: ${data.level}<br>
+            ${getLocalizedValue('status')}: ${data.status}
+        </p>
         <p>${data.description}</p>
         <h3>${getLocalizedValue('students.html')}</h3>`;
     sortAndBuildTable();
