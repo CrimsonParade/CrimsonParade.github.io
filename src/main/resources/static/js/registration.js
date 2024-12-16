@@ -5,81 +5,45 @@ window.onload = function () {
 
 function changeLanguage() {
     document.getElementById('form').innerHTML = `
-    <h2>${getLocalizedValue('registration')}</h2>
+    <h2>${getLocalizedValue('registration.html')}</h2>
     <h3 id="error" style="color: red;"></h3>
     <h3 id="success" style="color: green;"></h3>
     <div id="registrationForm">
-        <label for="username" class="sr-only">${getLocalizedValue('username')}</label>
-        <input type="text" class="form-control" id="username" name="username" placeholder="${getLocalizedValue('username')}" required autofocus>
-        <label for="password" class="sr-only">${getLocalizedValue('password')}</label>
-        <input type="password" class="form-control" id="password" name="password" placeholder="${getLocalizedValue('password')}" required>
-        <label for="passwordConfirmation" class="sr-only">${getLocalizedValue('passwordConfirmation')}</label>
-        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="${getLocalizedValue('passwordConfirmation')}" required>
         <label for="name" class="sr-only">${getLocalizedValue('firstName')}</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="${getLocalizedValue('firstName')}" required>
         <label for="surname" class="sr-only">${getLocalizedValue('secondName')}</label>
         <input type="text" class="form-control" id="surname" name="surname" placeholder="${getLocalizedValue('secondName')}">
+        <label for="id" class="sr-only">IDNP</label>
+        <input type="number" class="form-control" id="id" name="id" placeholder="IDNP" required autofocus>
         <label for="email" class="sr-only">Email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-        <button type="button" class="btn btn-danger btn-block" onclick="registerUser()">${getLocalizedValue('register')}</button>
+        <label for="password" class="sr-only">${getLocalizedValue('password')}</label>
+        <input type="password" class="form-control" id="password" name="password" placeholder="${getLocalizedValue('password')}" required>
+        <label for="passwordConfirmation" class="sr-only">${getLocalizedValue('passwordConfirmation')}</label>
+        <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="${getLocalizedValue('passwordConfirmation')}" required>
+        <select id="levelSelector" class="form-control">
+            <option value="null" disabled hidden selected>${getLocalizedValue('selectDesiredLevel')}</option>
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
+            <option value="B1">B1</option>
+            <option value="B2">B2</option>
+            <option value="C1">C1</option>
+        </select>
         <br>
-        <h6>${getLocalizedValue('alreadyRegistered')}</h6>
-        <a href="/login.html">
-            <button class="btn btn-danger btn-block" type="button">${getLocalizedValue('login')}</button>
-        </a>
+        <button type="button" class="btn btn-danger btn-block" onclick="registerUser()">${getLocalizedValue('register')}</button>
         <br>
     </div>`;
 }
 
 function registerUser() {
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-    const passwordConfirmation = document.getElementById('passwordConfirmation').value;
-    const name = document.getElementById('name').value;
-    const surname = document.getElementById('surname').value;
+    const name = `${document.getElementById('name').value} ${document.getElementById('surname').value}`;
+    const id = document.getElementById('id').value;
     const email = document.getElementById('email').value;
+    const level = document.getElementById('levelSelector').value;
 
-    let errors = validate(username, password, passwordConfirmation, name, email);
-    if (errors !== '') {
-        document.getElementById('error').innerText = errors;
-        return;
-    }
-    document.getElementById('error').innerText = '';
-    document.getElementById('success').innerText = getLocalizedValue('handlingRequest');
+    let students = JSON.parse(localStorage.getItem('students')) || [];
+    students.push({id, email, name, status: 'WAITING', level: level, group: ''});
+    localStorage.setItem('students', JSON.stringify(students));
+    document.getElementById('success').innerHTML = `${getLocalizedValue('handledSuccessfully')}:<br>${getStudentLink(id, name)}`;
     document.getElementById('registrationForm').hidden = true;
-    fetch('api/user/register', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({username, password, name, surname, email, language})
-    }).then(response => {
-        response.text().then(body => {
-            if (response.ok) {
-                document.getElementById('success').innerText = getLocalizedValue('registeredSuccessfully');
-            } else {
-                document.getElementById('success').innerText = '';
-                document.getElementById('error').innerText = getLocalizedValueByCode('ERROR_WHILE_HANDLING').replace('{operationName}', getLocalizedValue('registering')) + getLocalizedValueByCode(body);
-                document.getElementById('registrationForm').hidden = false;
-            }
-        })
-    })
-}
-
-function validate(username, password, passwordConfirmation, name, email) {
-    let errors = '';
-    if (!/^[a-zA-Z0-9]+$/.test(username) || username.length < 4) {
-        errors += getLocalizedValueByCode('INVALID_LOGIN');
-    }
-    if (password.length < 4) {
-        errors += getLocalizedValueByCode('INVALID_PASSWORD');
-    }
-    if (password !== passwordConfirmation) {
-        errors += getLocalizedValueByCode('PASSWORDS_ARE_DIFFERENT');
-    }
-    if (!name) {
-        errors += getLocalizedValueByCode('NAME_IS_REQUIRED');
-    }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        errors += getLocalizedValueByCode('INVALID_EMAIL');
-    }
-    return errors;
 }

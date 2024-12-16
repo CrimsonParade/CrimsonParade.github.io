@@ -1,4 +1,3 @@
-let currentUser;
 let currentList = [];
 
 function sortAndBuildTable() {
@@ -80,4 +79,16 @@ function getButton(textContent, onclick) {
 function getUrlParam(param) {
     let regexResult = new RegExp(`${param}=([^&]*)`).exec(decodeURI(window.location.href));
     return regexResult != null ? regexResult[1] : null;
+}
+
+function getGroupLink(group) {
+    return `<a href="/group.html?id=${group}">${group}</a>`;
+}
+
+function getTeacherLink(teacher) {
+    return `<a href="/teacher.html?id=${teacher}">${teacher}</a>`;
+}
+
+function getStudentLink(id, name) {
+    return `<a href="/student.html?id=${id}">${name}</a>`;
 }

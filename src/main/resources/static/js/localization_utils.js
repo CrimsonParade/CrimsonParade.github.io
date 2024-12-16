@@ -21,19 +21,14 @@ let localizations = new Map([
     ['excludeBusy', new Map([['romanian', 'Excludeți ocupați'], ['russian', 'Исключить занятых'], ['english', 'Exclude busy']])],
     ['actualize', new Map([['romanian', 'Actualizare'], ['russian', 'Актуализировать'], ['english', 'Actualize']])],
     ['informationAboutGroup', new Map([['romanian', 'Informația de grupul'], ['russian', 'Информация о группе'], ['english', 'Information about group']])],
-
     ['registration', new Map([['russian', 'Регистрация'], ['english', 'Registration']])],
-    ['login', new Map([['russian', 'Войти'], ['english', 'Login']])],
-    ['logout', new Map([['russian', 'Выйти'], ['english', 'Logout']])],
-    ['signIn', new Map([['russian', 'Войдите в свой аккаунт'], ['english', 'Sign In']])],
-    ['notRegistered', new Map([['russian', 'Нет аккаунта?'], ['english', 'Not Registered?']])],
-    ['alreadyRegistered', new Map([['russian', 'Уже зарегистрированы?'], ['english', 'Already have an account?']])],
-    ['register', new Map([['russian', 'Зарегистрироваться'], ['english', 'Register']])],
-    ['username', new Map([['russian', 'Логин'], ['english', 'Username']])],
-    ['password', new Map([['russian', 'Пароль'], ['english', 'Password']])],
-    ['passwordConfirmation', new Map([['russian', 'Подтвердите пароль'], ['english', 'Confirm password']])],
-    ['firstName', new Map([['russian', 'Имя'], ['english', 'Name']])],
-    ['secondName', new Map([['russian', 'Фамилия'], ['english', 'Surname']])]
+    ['firstName', new Map([['romanian', 'Prenumele'], ['russian', 'Имя'], ['english', 'Name']])],
+    ['secondName', new Map([['romanian', 'Numele'], ['russian', 'Фамилия'], ['english', 'Surname']])],
+    ['register', new Map([['romanian', 'Înregistrați-mă'], ['russian', 'Зарегистрироваться'], ['english', 'Register']])],
+    ['password', new Map([['romanian', 'Parola'], ['russian', 'Пароль'], ['english', 'Password']])],
+    ['passwordConfirmation', new Map([['romanian', 'Confirmați parola'], ['russian', 'Подтвердите пароль'], ['english', 'Confirm password']])],
+    ['selectDesiredLevel', new Map([['romanian', 'Selectați nivelul dorit'], ['russian', 'Выберите желаемый уровень'], ['english', 'Select desired level']])],
+    ['handledSuccessfully', new Map([['romanian', 'Cererea a fost acceptată și completată cu success'], ['russian', 'Запрос выполнен успешно'], ['english', 'Request handled successfully']])]
 ]);
 
 function getLocalizedValue(key) {
@@ -82,11 +77,7 @@ function loadNavbar() {
     document.getElementById('navbarCollapse').innerHTML = getLocalizedNavbar();
     let userData = document.getElementById('userData');
     userData.innerHTML = '';
-    fetch('/api/user/me')
-        .then(response => response.json())
-        .then(data => userData.appendChild(data.username ? getLoggedUserDiv(data) : getNotLoggedUserDiv()))
-        .catch(error => console.error('Error fetching data:', error))
-        .finally(() => userData.appendChild(getLanguageSelector()));
+    userData.appendChild(getLanguageSelector());
 }
 
 function getLanguageSelector() {
@@ -109,39 +100,4 @@ function createLanguageOption(value, text) {
     option.textContent = text;
     option.selected = language === value;
     return option;
-}
-
-function getLoggedUserDiv(data) {
-    currentUser = data.username;
-    return getTextWithButton(data.username + ' ', getLocalizedValue('logout'), () => fetch('/logout')
-        .then(ignored => loadNavbar())
-        .then(() => alert(getLocalizedValue('logoutSuccessfully')))
-        .catch(error => console.error('Logout error', error)));
-}
-
-function getNotLoggedUserDiv() {
-    return getTextWithButton(getLocalizedValue('notLogged'), getLocalizedValue('login'),
-        () => onclickWithConfirmation(() => window.location.href = getHrefWithRedirect('/login.html')));
-}
-
-function getTextWithButton(textContent, buttonText, onclick) {
-    let div = document.createElement('div');
-    div.textContent = textContent;
-    let button = document.createElement('button');
-    button.type = 'button';
-    button.classList.add('btn', 'btn-danger');
-    button.textContent = buttonText;
-    button.onclick = onclick;
-    div.appendChild(button);
-    return div;
-}
-
-function getHrefWithRedirect(href) {
-    return href + '?redirect=' + encodeURIComponent(window.location.pathname + window.location.search);
-}
-
-function onclickWithConfirmation(onclick) {
-    if (confirm(getLocalizedValue('unsavedDataWillBeLost'))) {
-        onclick();
-    }
 }

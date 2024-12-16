@@ -13,7 +13,7 @@ function buildStudentsHead(table) {
 function addStudent(index, item, tbody) {
     let tr = document.createElement('tr');
     tr.innerHTML = `<td>${index}</td>
-                    <td>${getStudentLink(item.name)}</td>
+                    <td>${getStudentLink(item.id, item.name)}</td>
                     <td>${item.status}</td>
                     <td>${item.level}</td>
                     <td>${getGroupLink(item.group)}</td>`;
@@ -64,16 +64,4 @@ function addGroup(index, item, tbody) {
                     <td>${getTeacherLink(item.teacher.name)}</td>
                     <td>${item.students.length}</td>`;
     tbody.appendChild(tr);
-}
-
-function getGroupLink(group) {
-    return `<a href="/group.html?id=${group}">${group}</a>`;
-}
-
-function getTeacherLink(teacher) {
-    return `<a href="/teacher.html?id=${teacher}">${teacher}</a>`;
-}
-
-function getStudentLink(student) {
-    return `<a href="/student.html?id=${student}">${student}</a>`;
 }
