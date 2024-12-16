@@ -15,9 +15,9 @@ function changeLanguage() {
     document.getElementById('form').innerHTML = `<h3>${data.name}</h3><br>
         <p align="left">
             Email: ${data.email}<br>
-            ${getLocalizedValue('status')}: ${data.status}<br>
-            ${getLocalizedValue('level')}: ${data.level}<br>
-            ${getLocalizedValue('group')}: ${getGroupLink(data.group)}
+            ${getLocalizedValue('status')}: ${getLocalizedValue(data.status)}<br>
+            ${getLocalizedValue('level')}: ${data.level}
+            ${data.group ? `<br>${getLocalizedValue('group')}: ${getGroupLink(data.group)}` : ''}
         </p>
         <h3>${getLocalizedValue('groups.html')}</h3>`;
     sortAndBuildTable();

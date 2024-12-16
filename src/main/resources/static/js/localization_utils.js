@@ -28,7 +28,11 @@ let localizations = new Map([
     ['password', new Map([['romanian', 'Parola'], ['russian', 'Пароль'], ['english', 'Password']])],
     ['passwordConfirmation', new Map([['romanian', 'Confirmați parola'], ['russian', 'Подтвердите пароль'], ['english', 'Confirm password']])],
     ['selectDesiredLevel', new Map([['romanian', 'Selectați nivelul dorit'], ['russian', 'Выберите желаемый уровень'], ['english', 'Select desired level']])],
-    ['handledSuccessfully', new Map([['romanian', 'Cererea a fost acceptată și completată cu success'], ['russian', 'Запрос выполнен успешно'], ['english', 'Request handled successfully']])]
+    ['selectConfirmedLevel', new Map([['romanian', 'Selectați nivelul confirmat'], ['russian', 'Выберите подтвержденный уровень'], ['english', 'Select confirmed level']])],
+    ['handledSuccessfully', new Map([['romanian', 'Cererea a fost acceptată și completată cu success'], ['russian', 'Запрос выполнен успешно'], ['english', 'Request handled successfully']])],
+    ['WAITING', new Map([['romanian', 'Așteaptă'], ['russian', 'Ожидает'], ['english', 'Waiting']])],
+    ['STUDYING', new Map([['romanian', 'Studiază'], ['russian', 'Изучает'], ['english', 'Studying']])],
+    ['FINISHED', new Map([['romanian', 'Absolvit'], ['russian', 'Завершил'], ['english', 'Finished']])]
 ]);
 
 function getLocalizedValue(key) {

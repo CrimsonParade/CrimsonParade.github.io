@@ -21,7 +21,7 @@ function updateData() {
     excludeBusy = document.getElementById('excludeBusy').checked;
     localStorage.setItem('excludeBusy', excludeBusy);
     if (excludeBusy) {
-        currentList = getTeachers().filter(v => !v.status.includes('IN_PROGRESS'));
+        currentList = getTeachers().filter(v => !v.status.includes('STUDYING'));
     } else {
         currentList = getTeachers();
     }

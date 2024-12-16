@@ -81,14 +81,14 @@ function getUrlParam(param) {
     return regexResult != null ? regexResult[1] : null;
 }
 
-function getGroupLink(group) {
-    return `<a href="/group.html?id=${group}">${group}</a>`;
+function getGroupLink(name) {
+    return `<a href="/group.html?id=${name}">${name}</a>`;
 }
 
-function getTeacherLink(teacher) {
-    return `<a href="/teacher.html?id=${teacher}">${teacher}</a>`;
+function getTeacherLink(id) {
+    return `<a href="/teacher.html?id=${id}">${getTeachers().filter(t => t.id === id)[0].name}</a>`;
 }
 
-function getStudentLink(id, name) {
-    return `<a href="/student.html?id=${id}">${name}</a>`;
+function getStudentLink(id) {
+    return `<a href="/student.html?id=${id}">${getStudents().filter(t => t.id === id)[0].name}</a>`;
 }

@@ -22,7 +22,7 @@ function changeLanguage() {
         <label for="passwordConfirmation" class="sr-only">${getLocalizedValue('passwordConfirmation')}</label>
         <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="${getLocalizedValue('passwordConfirmation')}" required>
         <select id="levelSelector" class="form-control">
-            <option value="null" disabled hidden selected>${getLocalizedValue('selectDesiredLevel')}</option>
+            <option value="null" disabled hidden selected>${getLocalizedValue('selectConfirmedLevel')}</option>
             <option value="A1">A1</option>
             <option value="A2">A2</option>
             <option value="B1">B1</option>
@@ -30,18 +30,18 @@ function changeLanguage() {
             <option value="C1">C1</option>
         </select>
         <br>
-        <button type="button" class="btn btn-danger btn-block" onclick="registerStudent()">${getLocalizedValue('register')}</button>
+        <button type="button" class="btn btn-danger btn-block" onclick="registerTeacher()">${getLocalizedValue('register')}</button>
         <br>
     </div>`;
 }
 
-function registerStudent() {
+function registerTeacher() {
     const name = `${document.getElementById('name').value} ${document.getElementById('surname').value}`;
     const id = document.getElementById('id').value;
     const email = document.getElementById('email').value;
     const level = document.getElementById('levelSelector').value;
 
-    saveStudent({id, email, name, status: 'WAITING', level: level, group: ''});
-    document.getElementById('success').innerHTML = `${getLocalizedValue('handledSuccessfully')}:<br>${getStudentLink(id)}`;
+    saveTeacher({id, email, name, status: 'WAITING', level: level, group: ''});
+    document.getElementById('success').innerHTML = `${getLocalizedValue('handledSuccessfully')}:<br>${getTeacherLink(id)}`;
     document.getElementById('registrationForm').hidden = true;
 }

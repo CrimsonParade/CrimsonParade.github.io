@@ -13,8 +13,8 @@ function buildStudentsHead(table) {
 function addStudent(index, item, tbody) {
     let tr = document.createElement('tr');
     tr.innerHTML = `<td>${index}</td>
-                    <td>${getStudentLink(item.id, item.name)}</td>
-                    <td>${item.status}</td>
+                    <td>${getStudentLink(item.id)}</td>
+                    <td>${getLocalizedValue(item.status)}</td>
                     <td>${item.level}</td>
                     <td>${getGroupLink(item.group)}</td>`;
     tbody.appendChild(tr);
@@ -35,8 +35,8 @@ function buildTeachersHead(table) {
 function addTeacher(index, item, tbody) {
     let tr = document.createElement('tr');
     tr.innerHTML = `<td>${index}</td>
-                    <td>${getTeacherLink(item.name)}</td>
-                    <td>${item.status}</td>
+                    <td>${getTeacherLink(item.id)}</td>
+                    <td>${getLocalizedValue(item.status)}</td>
                     <td>${item.level}</td>
                     <td>${getGroupLink(item.group)}</td>`;
     tbody.appendChild(tr);
@@ -59,9 +59,9 @@ function addGroup(index, item, tbody) {
     let tr = document.createElement('tr');
     tr.innerHTML = `<td>${index}</td>
                     <td>${getGroupLink(item.name)}</td>
-                    <td>${item.status}</td>
+                    <td>${getLocalizedValue(item.status)}</td>
                     <td>${item.level}</td>
-                    <td>${getTeacherLink(item.teacher.name)}</td>
+                    <td>${getTeacherLink(item.teacher.id)}</td>
                     <td>${item.students.length}</td>`;
     tbody.appendChild(tr);
 }

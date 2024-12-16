@@ -6,17 +6,18 @@ let addItem = (index, item, body) => addStudent(index, item, body);
 
 window.onload = function () {
     loadNavbar();
-    data = getGroups().get(getUrlParam('id'));
-    currentList = data.students;
+    data = getGroups().filter(t => t.name === getUrlParam('id'))[0];
+    let students = data.students.map(s => s.id);
+    currentList = getStudents().filter(s => students.includes(s.id));
     changeLanguage();
 }
 
 function changeLanguage() {
     document.getElementById('form').innerHTML = `<h3>${getLocalizedValue('informationAboutGroup')} '${data.name}'</h3><br>
         <p align="left">
-            ${getLocalizedValue('teacher')}: ${getTeacherLink(data.teacher.name)}<br>
+            ${getLocalizedValue('teacher')}: ${getTeacherLink(data.teacher.id)}<br>
             ${getLocalizedValue('level')}: ${data.level}<br>
-            ${getLocalizedValue('status')}: ${data.status}
+            ${getLocalizedValue('status')}: ${getLocalizedValue(data.status)}
         </p>
         <p>${data.description}</p>
         <h3>${getLocalizedValue('students.html')}</h3>`;
