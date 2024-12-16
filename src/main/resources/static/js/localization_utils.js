@@ -11,6 +11,8 @@ let localizations = new Map([
     ['students.html', new Map([['romanian', 'Elevi'], ['russian', 'Ученики'], ['english', 'Students']])],
     ['teachers.html', new Map([['romanian', 'Profesori'], ['russian', 'Преподаватели'], ['english', 'Teachers']])],
     ['groups.html', new Map([['romanian', 'Grupuri'], ['russian', 'Группы'], ['english', 'Groups']])],
+    ['teacher_registration.html', new Map([['romanian', 'Înregistrarea profesorilor'], ['russian', 'Регистрация преподавателя'], ['english', 'Teacher Registration']])],
+    ['group_registration.html', new Map([['romanian', 'Înregistrarea grupului'], ['russian', 'Регистрация группы'], ['english', 'Group Registration']])],
     ['contacts.html', new Map([['romanian', 'Contacte'], ['russian', 'Контакты'], ['english', 'Contacts']])],
     ['name', new Map([['romanian', 'Nume'], ['russian', 'Имя'], ['english', 'Name']])],
     ['status', new Map([['romanian', 'Starea'], ['russian', 'Статус'], ['english', 'Status']])],
@@ -68,7 +70,13 @@ function getLocalizedNavbar() {
                     <a class="nav-link" href="/groups.html">${getLocalizedValue('groups.html')}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://t.me/media_aggregated_reviews" target="_blank">${getLocalizedValue('contacts.html')}</a>
+                    <a class="nav-link" href="/teacher_registration.html">${getLocalizedValue('teacher_registration.html')}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/group_registration.html">${getLocalizedValue('group_registration.html')}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://t.me/exdeathx" target="_blank">${getLocalizedValue('contacts.html')}</a>
                 </li>
             </ul>`;
 }
@@ -91,7 +99,7 @@ function loadNavbar() {
 function getLanguageSelector() {
     const select = document.createElement('select');
     select.id = 'languageSelector';
-    select.className = 'form-control header-element';
+    select.className = 'form-control';
     select.style.maxWidth = '70px';
     select.style.display = 'inline';
     select.style.width = 'auto';
