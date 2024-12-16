@@ -19,7 +19,7 @@ function changeLanguage() {
             ${getLocalizedValue('level')}: ${data.level}<br>
             ${getLocalizedValue('status')}: ${getLocalizedValue(data.status)}
         </p>
-        <p>${data.description}</p>
+        <p>${data.description.replaceAll('\n', '<br>')}</p>
         <h3>${getLocalizedValue('students.html')}</h3>`;
     sortAndBuildTable();
 }

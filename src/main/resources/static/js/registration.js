@@ -41,7 +41,7 @@ function registerStudent() {
     const email = document.getElementById('email').value;
     const level = document.getElementById('levelSelector').value;
 
-    saveStudent({id, email, name, status: 'WAITING', level: level, group: ''});
+    saveStudent({id, email, name, level, status: 'WAITING', group: ''});
     document.getElementById('success').innerHTML = `${getLocalizedValue('handledSuccessfully')}:<br>${getStudentLink(id)}`;
     document.getElementById('registrationForm').hidden = true;
 }

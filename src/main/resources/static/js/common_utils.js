@@ -76,6 +76,14 @@ function getButton(textContent, onclick) {
     return buttonDiv;
 }
 
+function createOption(value, text, selected) {
+    let option = document.createElement('option');
+    option.value = value;
+    option.text = text;
+    option.selected = selected;
+    return option;
+}
+
 function getUrlParam(param) {
     let regexResult = new RegExp(`${param}=([^&]*)`).exec(decodeURI(window.location.href));
     return regexResult != null ? regexResult[1] : null;

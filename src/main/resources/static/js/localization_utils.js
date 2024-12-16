@@ -24,7 +24,7 @@ let localizations = new Map([
     ['registration', new Map([['russian', 'Регистрация'], ['english', 'Registration']])],
     ['firstName', new Map([['romanian', 'Prenumele'], ['russian', 'Имя'], ['english', 'Name']])],
     ['secondName', new Map([['romanian', 'Numele'], ['russian', 'Фамилия'], ['english', 'Surname']])],
-    ['register', new Map([['romanian', 'Înregistrați-mă'], ['russian', 'Зарегистрироваться'], ['english', 'Register']])],
+    ['register', new Map([['romanian', 'Înregistrați'], ['russian', 'Зарегистрировать'], ['english', 'Register']])],
     ['password', new Map([['romanian', 'Parola'], ['russian', 'Пароль'], ['english', 'Password']])],
     ['passwordConfirmation', new Map([['romanian', 'Confirmați parola'], ['russian', 'Подтвердите пароль'], ['english', 'Confirm password']])],
     ['selectDesiredLevel', new Map([['romanian', 'Selectați nivelul dorit'], ['russian', 'Выберите желаемый уровень'], ['english', 'Select desired level']])],
@@ -32,7 +32,11 @@ let localizations = new Map([
     ['handledSuccessfully', new Map([['romanian', 'Cererea a fost acceptată și completată cu success'], ['russian', 'Запрос выполнен успешно'], ['english', 'Request handled successfully']])],
     ['WAITING', new Map([['romanian', 'Așteaptă'], ['russian', 'Ожидает'], ['english', 'Waiting']])],
     ['STUDYING', new Map([['romanian', 'Studiază'], ['russian', 'Изучает'], ['english', 'Studying']])],
-    ['FINISHED', new Map([['romanian', 'Absolvit'], ['russian', 'Завершил'], ['english', 'Finished']])]
+    ['FINISHED', new Map([['romanian', 'Absolvit'], ['russian', 'Завершил'], ['english', 'Finished']])],
+    ['description', new Map([['romanian', 'Descriere'], ['russian', 'Описание'], ['english', 'Description']])],
+    ['selectTeacher', new Map([['romanian', 'Selectați profesor'], ['russian', 'Выберите преподавателя'], ['english', 'Select teacher']])],
+    ['selectStudents', new Map([['romanian', 'Selectați elevi'], ['russian', 'Выберите учеников'], ['english', 'Select students']])],
+    ['selectLevel', new Map([['romanian', 'Selectați nivelul'], ['russian', 'Выберите уровень'], ['english', 'Select level']])]
 ]);
 
 function getLocalizedValue(key) {
@@ -99,9 +103,5 @@ function getLanguageSelector() {
 }
 
 function createLanguageOption(value, text) {
-    const option = document.createElement('option');
-    option.value = value;
-    option.textContent = text;
-    option.selected = language === value;
-    return option;
+    return createOption(value, text, language === value);
 }
