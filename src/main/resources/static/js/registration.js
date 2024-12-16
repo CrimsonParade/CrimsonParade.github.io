@@ -14,7 +14,7 @@ function changeLanguage() {
         <label for="surname" class="sr-only">${getLocalizedValue('secondName')}</label>
         <input type="text" class="form-control" id="surname" name="surname" placeholder="${getLocalizedValue('secondName')}">
         <label for="id" class="sr-only">IDNP</label>
-        <input type="number" class="form-control" id="id" name="id" placeholder="IDNP" required autofocus>
+        <input type="number" class="form-control" id="id" name="id" placeholder="IDNP" required>
         <label for="email" class="sr-only">Email</label>
         <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
         <label for="password" class="sr-only">${getLocalizedValue('password')}</label>
@@ -22,12 +22,7 @@ function changeLanguage() {
         <label for="passwordConfirmation" class="sr-only">${getLocalizedValue('passwordConfirmation')}</label>
         <input type="password" class="form-control" id="passwordConfirmation" name="passwordConfirmation" placeholder="${getLocalizedValue('passwordConfirmation')}" required>
         <select id="levelSelector" class="form-control">
-            <option value="null" disabled hidden selected>${getLocalizedValue('selectDesiredLevel')}</option>
-            <option value="A1">A1</option>
-            <option value="A2">A2</option>
-            <option value="B1">B1</option>
-            <option value="B2">B2</option>
-            <option value="C1">C1</option>
+            <option value="null" disabled hidden selected>${getLocalizedValue('selectDesiredLevel')}</option>${getLevelOptions()}
         </select>
         <br>
         <button type="button" class="btn btn-danger btn-block" onclick="registerStudent()">${getLocalizedValue('register')}</button>

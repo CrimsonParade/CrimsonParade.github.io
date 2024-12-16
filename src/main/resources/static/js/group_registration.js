@@ -20,12 +20,7 @@ function changeLanguage() {
             <option value="null" disabled>${getLocalizedValue('selectStudents')}</option>
         </select>
         <select id="levelSelector" class="form-control">
-            <option value="null" disabled hidden selected>${getLocalizedValue('selectLevel')}</option>
-            <option value="A1">A1</option>
-            <option value="A2">A2</option>
-            <option value="B1">B1</option>
-            <option value="B2">B2</option>
-            <option value="C1">C1</option>
+            <option value="null" disabled hidden selected>${getLocalizedValue('selectLevel')}</option>${getLevelOptions()}
         </select>
         <br>
         <button type="button" class="btn btn-danger btn-block" onclick="registerGroup()">${getLocalizedValue('register')}</button>
